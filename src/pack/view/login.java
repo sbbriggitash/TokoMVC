@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package pack.view;
 
 import java.sql.Connection;
@@ -10,16 +6,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
-/**
- *
- * @author Briggita
- */
 public class login extends javax.swing.JFrame {
-
-    /**
-     * Creates new form home
-     */
+    public String user;
     public login() {
         initComponents();
     }
@@ -74,27 +64,26 @@ public class login extends javax.swing.JFrame {
     Connection connection;
     PreparedStatement ps;
     try {
-    connection =
-    DriverManager.getConnection("jdbc:mysql://localhost/tokomvc?zeroDateTimeBehavior=convertToNull", "root", "");
+    connection = DriverManager.getConnection("jdbc:mysql://localhost/tokomvc?zeroDateTimeBehavior=convertToNull", "root", "");
     ps = connection.prepareStatement("SELECT * FROM `tb_akun` WHERE `username` = ? AND `password` = ?");
     ps.setString(1, Username.getText());
     ps.setString(2, Password.getText());
-    ResultSet result =ps.executeQuery();
-    if(result.next()){
-    new login().show();
-    user = Username.getText();//perlu deklarasi user di class utama.
-    this.dispose();
+    ResultSet result = ps.executeQuery();
+    if(result.next())
+    {
+        new home().show();
+        user = Username.getText();//perlu deklarasi user di class utama.
+        this.dispose();
     }
     else{
         JOptionPane.showMessageDialog(rootPane, "Salah!");
-    }
-    Password.setText("");
-    Username.requestFocus();
-    }
+        Password.setText("");
+        Username.requestFocus();
+        }
     } catch (SQLException ex){
         JOptionPane.showMessageDialog(rootPane,"Gagal!");
     }//GEN-LAST:event_SignInActionPerformed
-
+    }
     /**
      * @param args the command line arguments
      */
@@ -129,26 +118,6 @@ public class login extends javax.swing.JFrame {
                 new login().setVisible(true);
             }
         });
-    }
-
-    public Object getKode() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public Object getNama() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public Object getHarga() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public Object getKategori() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public Object getJenis() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

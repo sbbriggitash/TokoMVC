@@ -14,7 +14,7 @@ public class m_toko
     public String Nama_Barang, Jenis, Harga, Kategori;
     public String Kode_Barang;
     
-    public String getKode()
+    public String getkode()
     {
         return Kode_Barang;
     }
@@ -26,7 +26,7 @@ public class m_toko
     {
         return Kategori;
     }
-    public String getJenis()
+    public String getjenis()
     {
         return Jenis;
     }

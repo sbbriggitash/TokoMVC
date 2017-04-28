@@ -24,17 +24,56 @@ import pack.model.m_toko;
  *
  * @author Briggita
  */
-public class home extends javax.swing.JFrame {
+public class home extends javax.swing.JFrame
+{
     controllerToko ctoko;
     List<m_toko>listdata = new ArrayList<>();
+    
 
     /**
      * Creates new form home
      */
     public home() {
         initComponents();
-        ctoko = new controllerToko (this);
+        ctoko = new controllerToko(this);
         ctoko.isiTable();
+    }
+    
+    public JTextField getTxtKode(){
+        return Kode;
+    }
+    public JTextField getTxtNama(){
+        return Nama;
+    }
+    public JTextField getTxtHarga(){
+        return Harga;
+    }
+    public JComboBox getCbKategori(){
+        return Kategori;
+    }
+    public JComboBox getCbJenis(){
+        return Jenis;
+    }
+    public JComboBox getCbCariKategori(){
+        return CariKategori;
+    }
+    public JButton getButtonHapus(){
+        return Hapus;
+    }
+    public JButton getButtonBersih(){
+        return Bersih;
+    }
+    public JButton getButtonSimpan(){
+        return Simpan;
+    }
+    public JButton getButtonUbah(){
+        return Ubah;
+    }
+    public JButton getButtonKeluar(){
+        return Keluar;
+    }
+    public JTable getTableData(){
+        return Tabel;
     }
 
     /**
@@ -67,7 +106,7 @@ public class home extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabel = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
-        Pencarian = new javax.swing.JComboBox<>();
+        CariKategori = new javax.swing.JComboBox<>();
         Cari = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -162,8 +201,8 @@ public class home extends javax.swing.JFrame {
         jLabel8.setText("Pencarian Berdasarkan Kategori Makanan");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, -1));
 
-        Pencarian.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Makanan" }));
-        getContentPane().add(Pencarian, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 120, -1));
+        CariKategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Makanan" }));
+        getContentPane().add(CariKategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 320, 120, -1));
 
         Cari.setText("Cari");
         Cari.addActionListener(new java.awt.event.ActionListener() {
@@ -171,7 +210,7 @@ public class home extends javax.swing.JFrame {
                 CariActionPerformed(evt);
             }
         });
-        getContentPane().add(Cari, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, -1, -1));
+        getContentPane().add(Cari, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 320, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -206,9 +245,11 @@ public class home extends javax.swing.JFrame {
 
     private void CariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CariActionPerformed
         // TODO add your handling code here:
-        ctoko.
+        ctoko.CariKategori();
+        ctoko.isiTable();
     }//GEN-LAST:event_CariActionPerformed
 
+    
     /**
      * @param args the command line arguments
      */
@@ -218,22 +259,7 @@ public class home extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        
         //</editor-fold>
 
         /* Create and display the form */
@@ -248,6 +274,7 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JTextField Admin;
     private javax.swing.JButton Bersih;
     private javax.swing.JButton Cari;
+    private javax.swing.JComboBox<String> CariKategori;
     private javax.swing.JButton Hapus;
     private javax.swing.JTextField Harga;
     private javax.swing.JComboBox<String> Jenis;
@@ -255,7 +282,6 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JButton Keluar;
     private javax.swing.JTextField Kode;
     private javax.swing.JTextField Nama;
-    private javax.swing.JComboBox<String> Pencarian;
     private javax.swing.JButton Simpan;
     private javax.swing.JTable Tabel;
     private javax.swing.JButton Ubah;
